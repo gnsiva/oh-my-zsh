@@ -1,6 +1,7 @@
 # ZSH Theme - Altered version of Bira
-# Prequisits
+# Prequisites
 #
+# The zsh-command-time plugin https://github.com/popstas/zsh-command-time
 # Set the ZSH_THEME_USER_COLOUR variable for your machine
 #
 # To use any 256 colour code, you can do the below
@@ -9,6 +10,8 @@
 #
 # To use a pre-existing oh-my-zsh colour
 # export ZSH_THEME_USER_COLOUR="$fg[yellow]"
+#
+# For gns: edit in bin folder, copy into oh-my-zsh folder to update git
 
 
 local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
@@ -28,10 +31,6 @@ local venv_prompt='$(virtualenv_prompt_info)'
 
 ZSH_THEME_RVM_PROMPT_OPTIONS="i v g"
 
-PROMPT="╭─${venv_prompt}${user_host}${current_dir}${rvm_ruby}${git_branch}
-╰─%B[%*]${user_symbol}%b "
-RPROMPT="%B${return_code}%b"
-
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[yellow]%}‹"
 ZSH_THEME_GIT_PROMPT_SUFFIX="› %{$reset_color%}"
 
@@ -42,4 +41,9 @@ ZSH_THEME_VIRTUAL_ENV_PROMPT_PREFIX="%{$fg[green]%}‹"
 ZSH_THEME_VIRTUAL_ENV_PROMPT_SUFFIX="› %{$reset_color%}"
 ZSH_THEME_VIRTUALENV_PREFIX=$ZSH_THEME_VIRTUAL_ENV_PROMPT_PREFIX
 ZSH_THEME_VIRTUALENV_SUFFIX=$ZSH_THEME_VIRTUAL_ENV_PROMPT_SUFFIX
+
+
+PROMPT="╭─${venv_prompt}${user_host}${current_dir}${rvm_ruby}${git_branch}
+╰─%B[%*]${user_symbol}%b "
+RPROMPT="%B$(zsh_command_time)${return_code}%b"
 
