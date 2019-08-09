@@ -1,0 +1,1 @@
+/home/gns/bin/bashrcs/gns-bira.zsh-theme
